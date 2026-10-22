@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Past Continuous Battle 3D</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Fkburger;src:local('Fkburger'),local('FK Burger')}
+:root{--ink:#4a3f6b;--panel:#ffffffe6;--bg:linear-gradient(160deg,#ffe3ef,#dff0ff 55%,#e6ffe9);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#f3ecff;--panel:#3b3358e6;--bg:linear-gradient(160deg,#2f2748,#2a3350 55%,#273b3a)}}
+:root[data-theme=dark]{--ink:#f3ecff;--panel:#3b3358e6;--bg:linear-gradient(160deg,#2f2748,#2a3350 55%,#273b3a)}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Fkburger,Mali,Tahoma,sans-serif;font-weight:700;overflow-x:hidden}
+*{box-sizing:border-box}[hidden]{display:none!important}
+#app{max-width:760px;margin:0 auto;padding:12px;min-height:100%}
+.card{background:var(--panel);border-radius:24px;padding:16px;border:3px solid #fff;box-shadow:0 8px 0 rgba(140,120,190,.28)}
+button{font:inherit;color:#4a3f6b;border:0;border-radius:18px;padding:12px 18px;cursor:pointer;background:#ffb3d1;box-shadow:0 6px 0 #e08fb2;transition:transform .1s,box-shadow .1s;font-size:16px}
+button:active:not(:disabled){transform:translateY(5px);box-shadow:0 1px 0 #e08fb2}
+button:disabled{opacity:.5;cursor:not-allowed}
+.b2{background:#b8f0d8;box-shadow:0 6px 0 #86cdb0}.b3{background:#b9dcff;box-shadow:0 6px 0 #86b4e0}.b4{background:#fff3b0;box-shadow:0 6px 0 #d8c874}
+#mu{position:fixed;right:12px;top:calc(10px + env(safe-area-inset-top,0px));z-index:20;padding:8px 12px}
+h1{margin:6px 0;font-size:clamp(26px,6vw,40px);text-align:center;text-shadow:3px 3px 0 #ffb3d1}
+input{font:inherit;width:100%;padding:14px;border-radius:16px;border:3px solid #d9c9ff;background:#fff;color:#4a3f6b;font-size:18px;text-align:center}
+.c{text-align:center}.warn{color:#d6456f;min-height:24px}
+#sm .pl{position:relative;height:340px;margin:10px 0;border-radius:24px;background:linear-gradient(#bfe6ff,#e4f7d4 55%,#c9f0d8);overflow:hidden;perspective:700px;border:4px solid #fff}
+#mp{position:absolute;inset:0;transform:rotateX(22deg);transform-origin:bottom}
+#mp svg{position:absolute;inset:0;width:100%;height:100%}
+.nd{position:absolute;font-size:44px;transform:translate(-50%,-50%);text-align:center;line-height:1}
+.nd small{display:block;font-size:12px}
+#mh{position:absolute;font-size:46px;transform:translate(-50%,-80%);transition:left 1.6s linear,top 1.6s linear;animation:bob .5s infinite alternate}
+@keyframes bob{to{margin-top:-8px}}
+#ar{position:relative;height:300px;border-radius:24px;overflow:hidden;perspective:800px;border:4px solid #fff;box-shadow:0 8px 0 rgba(140,120,190,.28)}
+#bg{position:absolute;inset:0}#bg span{position:absolute;opacity:.9}
+#fl{position:absolute;left:-30%;right:-30%;bottom:-30px;height:170px;transform:rotateX(62deg);transform-origin:bottom;background:repeating-conic-gradient(#ffffff66 0 25%,#ffffff22 0 50%) 0 0/64px 64px}
+#s3{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(6deg) rotateY(-8deg)}
+.ch{position:absolute;bottom:48px;text-align:center;width:120px;transform-style:preserve-3d}
+#hero{left:8%}#en{right:8%}
+.em{font-size:72px;line-height:1;animation:bob .7s infinite alternate ease-in-out;filter:drop-shadow(0 8px 4px #0003);position:relative}
+#hw{position:absolute;right:-6px;bottom:6px;font-size:32px}
+.sh{position:absolute;left:20px;right:20px;bottom:-12px;height:14px;border-radius:50%;background:#0003}
+.nm{font-size:13px;background:#fff;color:#4a3f6b;border-radius:10px;padding:1px 8px;display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb{height:10px;background:#fff;border-radius:6px;margin:3px 10px;overflow:hidden;border:2px solid #fff}.hb i{display:block;height:100%;background:#ff8fb3;transition:width .5s}.hb.g i{background:#7fe0b0}
+.hit{animation:sk .5s}.hurt{animation:sk .5s}
+.hit .em{filter:brightness(2) drop-shadow(0 0 10px #fff)}.hurt .em{filter:sepia(1) saturate(6) hue-rotate(-30deg)}
+@keyframes sk{20%{margin-left:-14px}40%{margin-left:14px}60%{margin-left:-10px}80%{margin-left:8px}}
+.pr{position:absolute;font-size:34px;z-index:5;transform:translate(-50%,-50%)}
+.ft{position:absolute;z-index:6;font-size:26px;color:#fff;text-shadow:2px 2px 0 #e0447a,-2px -2px 0 #e0447a;transform:translate(-50%,-50%);pointer-events:none}
+#fgt{position:absolute;inset:0;display:grid;place-items:center;font-size:56px;color:#fff;text-shadow:4px 4px 0 #e0447a;z-index:7;pointer-events:none}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 8px;font-size:14px;padding-right:110px;flex-wrap:wrap}
+.dots i{display:inline-block;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #d9c9ff;margin-right:4px}.dots .ok{background:#7fe0b0}.dots .no{background:#ff8fb3}.dots .cur{background:#fff3b0}
+#qa{margin-top:12px}.q{font-size:clamp(18px,4.5vw,24px);margin:6px 0 12px}.bl{color:#d6456f;border-bottom:3px dashed #d6456f}
+.ty{display:inline-block;background:#d9c9ff;color:#4a3f6b;border-radius:12px;padding:2px 12px;font-size:13px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.op{background:#fff;box-shadow:0 5px 0 #d9c9ff;text-align:left;padding:12px}.op i{background:#d9c9ff;border-radius:8px;padding:0 7px;margin-right:8px;font-style:normal}
+.wr{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.wd,.tk{background:#fff;box-shadow:0 4px 0 #d9c9ff;padding:8px 12px}
+.bx{min-height:52px;border:3px dashed #d9c9ff;border-radius:16px;padding:6px;display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.good{background:#b8f0d8!important;box-shadow:0 5px 0 #86cdb0!important}.bad{background:#ffc2d4!important;box-shadow:0 5px 0 #e08fb2!important}
+#fb{margin-top:12px;background:#fff9d6;color:#4a3f6b;border-radius:16px;padding:12px;font-weight:500}
+#ov{position:fixed;inset:0;background:#4a3f6b99;display:grid;place-items:center;padding:16px;z-index:30}#ov .card{max-width:420px;width:100%;text-align:center}
+#ov .big{font-size:60px}.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:2px solid #d9c9ff55}
+@media(max-width:520px){.g{grid-template-columns:1fr}.em{font-size:56px}.ch{width:96px}#ar{height:260px}}
+.em svg{width:104px;height:104px;overflow:visible}.em{transform:translateZ(50px)}#mh svg{width:52px}
+#pz{position:fixed;right:64px;top:calc(10px + env(safe-area-inset-top,0px));z-index:20;padding:8px 12px}input[type=range]{padding:0;border:0;background:none}
+.sl{position:absolute;width:96px;height:96px;border:9px solid #fff;border-right-color:transparent;border-bottom-color:transparent;border-radius:50%;z-index:6;filter:drop-shadow(0 0 8px #fff)}.rg{position:absolute;width:40px;height:40px;border:5px solid #fff;border-radius:50%;z-index:6}
+.tele .em{filter:drop-shadow(0 0 16px #ff4d6d) brightness(1.15)}.frz{filter:contrast(1.35) saturate(1.5)}
+.fa{left:-10%;font-size:26px;animation:fa 5s linear infinite}.f2{animation-duration:7s;animation-delay:2s}.f3{animation-duration:4s;animation-delay:1s}@keyframes fa{to{left:110%}}
+.arm{transform-origin:70px 62px;animation:ia 1s infinite alternate ease-in-out}@keyframes ia{to{transform:rotate(-14deg)}}
+.swing .arm{animation:sw .5s}@keyframes sw{0%{transform:rotate(0)}30%{transform:rotate(-95deg)}65%{transform:rotate(80deg)}100%{transform:rotate(0)}}
+.lg{transform-box:fill-box;transform-origin:50% 0}.walk .lg.l{animation:wl .17s infinite alternate}.walk .lg.r{animation:wl .17s infinite alternate-reverse}@keyframes wl{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+.wg{transform-box:fill-box;transform-origin:50% 100%;animation:fl .35s infinite alternate ease-in-out}@keyframes fl{to{transform:scaleY(.55) rotate(10deg)}}
+.ey{transform-box:fill-box;transform-origin:center;animation:bk 3.5s infinite}@keyframes bk{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}.card{transform:perspective(900px) rotateX(2deg)}#s3{transition:transform .2s}
+@media(max-width:520px){.em svg{width:80px;height:80px}}
+@media(prefers-reduced-motion:reduce){.em,#mh,.arm,.wg,.ey,.lg,.fa{animation:none!important}}
+</style></head><body><div id="app">
+<button id="mu" class="b4" aria-label="ปิดเสียง">🔊</button><button id="pz" class="b3" aria-label="พักเกม">⏸</button>
+
+<section id="sn" class="card c">
+<h1>⚔️ Past Continuous<br>Battle 3D</h1>
+<p>🦸 ผู้กล้าแห่งไวยากรณ์ ออกเดินทางไปปราบจอมวายร้าย 3 ด่าน!</p>
+<input id="nm" list="dl" maxlength="30" placeholder="พิมพ์ชื่อนักเรียน" autocomplete="off"><datalist id="dl"></datalist>
+<p class="warn" id="wn"></p>
+<button id="go" class="b2">▶ เริ่มเกม</button>
+</section>
+
+<section id="sm" class="card c" hidden>
+<h1 id="mt">แผนที่ผจญภัย</h1>
+<div class="pl"><div id="mp"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline id="pl" fill="none" stroke="#fff" stroke-width="2.4" stroke-dasharray="4 3" stroke-linecap="round"/></svg><div id="nds"></div><div id="mh">🦸</div></div></div>
+<button id="wk" class="b3">👣 เดินไปด่านถัดไป</button>
+</section>
+
+<section id="sb" hidden>
+<div class="top"><span id="tt"></span><span class="dots" id="dt"></span><span id="sc"></span></div>
+<div id="ar"><div id="bg"></div><div id="fl"></div><button id="dg" class="b3" hidden style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:9">💨 หลบ!</button>
+<div id="s3">
+<div class="ch" id="hero"><span class="nm" id="hn"></span><div class="hb g"><i id="hh" style="width:100%"></i></div><div class="em"><span id="hw"></span></div><div class="sh"></div></div>
+<div class="ch" id="en"><span class="nm" id="en_n"></span><div class="hb"><i id="eh" style="width:100%"></i></div><div class="em" id="ee"></div><div class="sh"></div></div>
+</div></div>
+<div class="card" id="qa-card" style="margin-top:12px"><span class="ty" id="ty"></span><div id="qa"></div><div id="fb" hidden></div></div>
+</section>
+
+<section id="se" class="card c" hidden></section>
+<div id="ov" hidden></div>
+</div>
+<script>
+const $=s=>document.querySelector(s),sleep=ms=>new Promise(r=>setTimeout(r,ms)),shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const K=matchMedia('(prefers-reduced-motion:reduce)').matches?.35:1;
+/* ===== เสียง ===== */
+let AC,mute=false;
+function ctx(){AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();return AC}
+function tone(f1,f2,d,ty,v,dl=0,m=SV){v*=m;const a=ctx(),o=a.createOscillator(),g=a.createGain(),t=a.currentTime+dl;o.type=ty;o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(a.destination);o.start(t);o.stop(t+d)}
+function noise(d,v,fr,dl=0){v*=SV;const a=ctx(),n=a.sampleRate*d,b=a.createBuffer(1,n,a.sampleRate),x=b.getChannelData(0);for(let i=0;i<n;i++)x[i]=Math.random()*2-1;const s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain(),t=a.currentTime+dl;s.buffer=b;f.type='lowpass';f.frequency.value=fr;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);s.connect(f).connect(g).connect(a.destination);s.start(t)}
+function snd(k){if(mute)return;try{
+if(k=='ok'){noise(.15,.6,6000);tone(1400,2600,.18,'square',.12);tone(900,1800,.25,'triangle',.12,.07);tone(220,110,.2,'sawtooth',.2,.05);tone(2200,2200,.3,'triangle',.1,.12);tone(660,660,.12,'square',.1,.2);tone(880,880,.25,'square',.1,.32)}
+if(k=='bad'){noise(.6,.9,500);tone(150,35,.6,'sawtooth',.35);tone(90,30,.5,'square',.2,.1);noise(.9,1,250,.05);tone(70,22,.9,'sine',.7);tone(500,180,.5,'triangle',.2,.25)}
+if(k=='step')tone(300,200,.08,'triangle',.15);
+if(k=='click')tone(700,900,.07,'sine',.15);
+if(k=='fight'){[0,.22,.44].forEach(d=>{tone(130,40,.2,'sine',.6,d);noise(.1,.3,800,d)});tone(330,330,.25,'sawtooth',.14,.7);tone(440,440,.5,'sawtooth',.14,.95)}
+if(k=='win')[523,659,784,1047].forEach((f,i)=>tone(f,f*1.01,.25,'triangle',.2,i*.14));
+if(k=='lose')[392,330,262,196].forEach((f,i)=>tone(f,f*.98,.3,'sawtooth',.15,i*.2));
+}catch(e){}}
+$('#mu').onclick=()=>{mute=!mute;$('#mu').textContent=mute?'🔇':'🔊'};
+/* ===== ข้อมูล ===== */
+const E=[{n:'ก็อบลิน',e:'👺',a:'🗡️',t:'ทุ่งหญ้าสงคราม',bg:'linear-gradient(#bfe6ff,#e4f7d4 70%)',d:['🏰','⛰️','🚩','☁️','⚔️','🍄','🗡️']},
+{n:'ราชาผีดิบ',e:'💀',a:'💀',t:'สุสานแห่งเงา',bg:'linear-gradient(#cdbdf5,#f1d6f0 70%)',d:['🌙','🪦','🚩','🦇','🛡️','🏛️','🗡️']},
+{n:'มังกร',e:'🐉',a:'🔥',t:'ภูเขาไฟเดือด',bg:'linear-gradient(#ffd3b8,#fff1c9 70%)',d:['🌋','🏯','🚩','☁️','⚔️','💎','🪨']}];
+const W=[{n:'ไม้เท้า',e:'🪄',p:'✨'},{n:'ดาบ',e:'🗡️',p:'🗡️',s:1},{n:'ธนู',e:'🏹',p:'➳'},{n:'ค้อนทอง',e:'🔨',p:'🔨',s:1}];
+const G=(b)=>`<svg viewBox="0 0 100 100"><g stroke="#4a3f6b" stroke-width="3" stroke-linejoin="round">${b}</g></svg>`;
+const EY=(y,r=4.5)=>`<circle class="ey" cx="40" cy="${y}" r="${r}" fill="#4a3f6b"/><circle class="ey" cx="60" cy="${y}" r="${r}" fill="#4a3f6b"/><circle cx="41.5" cy="${y-1.5}" r="1.5" fill="#fff" stroke="none"/><circle cx="61.5" cy="${y-1.5}" r="1.5" fill="#fff" stroke="none"/>`;
+const HERO=G(`<rect class="lg l" x="36" y="84" width="10" height="15" rx="5" fill="#ffe0c8"/><rect class="lg r" x="54" y="84" width="10" height="15" rx="5" fill="#ffe0c8"/><path d="M22 60Q50 100 78 60L70 92H30Z" fill="#ffb3d1"/><rect x="32" y="58" width="36" height="30" rx="14" fill="#b8f0d8"/><circle cx="50" cy="38" r="26" fill="#ffe0c8"/><path d="M24 38Q22 8 50 10Q78 8 76 38Q60 22 24 38Z" fill="#ff9ec4"/>${EY(44)}<circle cx="31" cy="52" r="4" fill="#ffb3b3" stroke="none"/><circle cx="69" cy="52" r="4" fill="#ffb3b3" stroke="none"/><path d="M45 54Q50 59 55 54" fill="none" stroke-linecap="round"/><path class="arm" d="M68 62L86 52" stroke="#ffe0c8" stroke-width="10" stroke-linecap="round"/>`);
+const CH=[G(`<path d="M18 40L2 26L22 58ZM82 40L98 26L78 58Z" fill="#a8e6a3"/><rect x="28" y="62" width="44" height="28" rx="14" fill="#d8b48a"/><circle cx="50" cy="42" r="30" fill="#a8e6a3"/><path d="M32 32L46 39M68 32L54 39" stroke-width="4" stroke-linecap="round"/>${EY(46)}<path d="M38 58Q50 52 62 58Z" fill="#fff"/>`),
+G(`<rect x="30" y="62" width="40" height="28" rx="12" fill="#d9c9ff"/><circle cx="50" cy="44" r="28" fill="#fff"/><path d="M26 24L30 6L41 19L50 4L59 19L70 6L74 24Z" fill="#ffe27a"/><circle cx="39" cy="46" r="7" fill="#4a3f6b"/><circle cx="61" cy="46" r="7" fill="#4a3f6b"/><path d="M50 54L46 60H54Z" fill="#4a3f6b"/><path d="M36 66L42 62L48 66L54 62L60 66L66 62" fill="none"/>`),
+G(`<path class="wg" d="M16 52Q0 16 26 20Q30 38 32 54ZM84 52Q100 16 74 20Q70 38 68 54Z" fill="#b9dcff"/><ellipse cx="50" cy="68" rx="30" ry="24" fill="#ffb3d1"/><ellipse cx="50" cy="72" rx="18" ry="16" fill="#fff3b0"/><path d="M30 22L34 4L44 18ZM70 22L66 4L56 18Z" fill="#fff3b0"/><circle cx="50" cy="40" r="26" fill="#ffb3d1"/>${EY(40,5)}<circle cx="45" cy="52" r="2" fill="#4a3f6b"/><circle cx="55" cy="52" r="2" fill="#4a3f6b"/><path d="M42 58Q50 52 58 58" fill="none" stroke-linecap="round"/>`)];
+const MS=['ภารกิจ: ปราบก็อบลินจอมขโมย','ภารกิจ: ส่งราชาผีดิบกลับสุสาน','ภารกิจ: หยุดมังกรพ่นไฟ'];
+const TY={t:'⌨️ พิมพ์คำตอบ',m:'🔗 จับคู่',c:'🎯 เลือกคำตอบ',f:'✏️ เติมคำในช่องว่าง',e:'🔍 จับผิด (Error)',o:'🧩 เรียงประโยคใหม่'};
+const QS=[[
+{t:'c',q:'She ___ a book at 8 pm yesterday.',o:['was reading','were reading','reads','is reading'],a:0,x:'she เป็นเอกพจน์ จึงใช้ was + V-ing (was reading) เพราะเป็นเหตุการณ์ที่กำลังเกิดขึ้น ณ เวลานั้นในอดีต'},
+{t:'f',q:'They ___ football in the park.',o:['were playing','was playing','played','playing'],a:0,x:'they เป็นพหูพจน์ ใช้ were + V-ing และต้องมี were ไม่ใช่ V-ing ลอย ๆ'},
+{t:'e',w:['We','was','watching','TV','at','nine.'],a:1,fix:'were',x:'We เป็นพหูพจน์ ต้องใช้ were watching ไม่ใช่ was watching'},
+{t:'o',w:['My','mother','was','cooking','dinner.'],x:'โครงสร้าง: Subject + was/were + V-ing + กรรม'},
+{t:'c',q:'The kids ___ in the garden.',o:['were running','was running','ran','are running'],a:0,x:'the kids เป็นพหูพจน์ในอดีตต่อเนื่อง จึงใช้ were running'},
+{t:'f',q:'My dad ___ the car at six.',o:['was washing','were washing','washed','washing'],a:0,x:'my dad = he ใช้ was + V-ing เพื่อบอกว่ากำลังทำอยู่ ณ เวลานั้น'},
+{t:'e',w:['You','was','singing','loudly','last','night.'],a:1,fix:'were',x:'You ใช้ were เสมอ จึงเป็น You were singing'},
+{t:'o',w:['The','birds','were','singing','outside.'],x:'the birds เป็นพหูพจน์ จึงใช้ were + V-ing'},
+{t:'t',q:'We ___ (watch) TV at nine.',a:['were watching'],x:'we ใช้ were + V-ing'},
+{t:'m',p:[['I','was'],['They','were'],['She','was'],['We','were']],x:'I/he/she/it ใช้ was ส่วน you/we/they ใช้ were'}],
+[
+{t:'c',q:'___ you sleeping at 10 pm last night?',o:['Were','Was','Did','Are'],a:0,x:'ประโยคคำถาม Past Continuous ย้าย was/were ขึ้นหน้าประธาน และ you ใช้ were'},
+{t:'f',q:'He ___ listening to the teacher.',o:['wasn’t','weren’t','didn’t','not'],a:0,x:'ปฏิเสธใช้ was/were + not โดย he ใช้ wasn’t (ไม่ใช้ didn’t กับ V-ing)'},
+{t:'e',w:['What','was','she','do','at','that','time?'],a:3,fix:'doing',x:'หลัง was she ต้องเป็น V-ing คือ What was she doing?'},
+{t:'o',w:['What','were','you','doing?'],x:'คำถาม: Wh-word + was/were + ประธาน + V-ing?'},
+{t:'c',q:'I ___ working at 7 pm. I was at the gym.',o:['wasn’t','weren’t','didn’t','am not'],a:0,x:'I ใช้ was จึงปฏิเสธเป็น wasn’t working'},
+{t:'c',q:'What ___ they doing when you arrived?',o:['were','was','did','are'],a:0,x:'they ใช้ were: What were they doing?'},
+{t:'e',w:['She','weren’t','studying','at','that','time.'],a:1,fix:'wasn’t',x:'She ใช้ wasn’t ไม่ใช่ weren’t'},
+{t:'o',w:['Was','he','sleeping','at','noon?'],x:'คำถามใช้ Was ขึ้นต้นประโยคเมื่อประธานเป็น he'},
+{t:'t',q:'They ___ (not / play) football at 5 pm.',a:['weren’t playing','were not playing','werent playing'],x:'ปฏิเสธ: were not (weren’t) + V-ing'},
+{t:'m',p:[['Was he running?','No, he wasn’t.'],['Were they playing?','Yes, they were.'],['What were you doing?','I was reading.']],x:'ตอบคำถาม Past Continuous ให้สอดคล้องกับ was/were'}],
+[
+{t:'c',q:'I ___ TV when the phone rang.',o:['was watching','watched','were watching','watch'],a:0,x:'เหตุการณ์ที่กำลังดำเนินอยู่ใช้ Past Continuous (was watching) ส่วนเหตุการณ์ที่แทรกเข้ามาใช้ Past Simple (rang)'},
+{t:'f',q:'While she ___ dinner, the lights went out.',o:['was cooking','cooked','were cooking','cooks'],a:0,x:'While + เหตุการณ์ที่กำลังทำอยู่ ใช้ was cooking ส่วน went out เป็นเหตุการณ์สั้น ๆ ที่แทรกเข้ามา'},
+{t:'e',w:['While','I','walked','home,','it','began','to','rain.'],a:2,fix:'was walking',x:'หลัง While ใช้ Past Continuous: While I was walking home, it began to rain.'},
+{t:'o',w:['She','was','sleeping','when','I','arrived.'],x:'Past Continuous (was sleeping) + when + Past Simple (arrived)'},
+{t:'c',q:'We ___ dinner when the guests arrived.',o:['were having','had','was having','have'],a:0,x:'we ใช้ were + V-ing สำหรับเหตุการณ์ที่กำลังเกิด ก่อนแขกมาถึง (arrived = Past Simple)'},
+{t:'c',q:'When I ___ home, my sister was cooking.',o:['got','was getting','were getting','get'],a:0,x:'การกระทำสั้น ๆ ที่แทรกเข้ามาใช้ Past Simple (got) ส่วน was cooking คือสิ่งที่ทำอยู่ก่อนแล้ว'},
+{t:'f',q:'They ___ a movie when the power went out.',o:['were watching','watched','was watching','watch'],a:0,x:'they + กำลังทำอยู่ก่อนไฟดับ ใช้ were watching'},
+{t:'o',w:['I','was','reading','when','he','called.'],x:'Past Continuous (was reading) + when + Past Simple (called)'},
+{t:'t',q:'I ___ (walk) home when it started to rain.',a:['was walking'],x:'เหตุการณ์ที่กำลังทำอยู่ใช้ was walking ส่วน started เป็น Past Simple'}]];
+/* ===== สถานะ ===== */
+let strk=0,mul=1,bon=0,dg=3,dod=false,paused=false,mt,SV=1,MV=.5,msel=null,mdone=0,ord=[0,1,2,3,4],name='',st=0,wi=0,mp=0,qi=0,c=0,wr=0,hp=100,pts=0,busy=false,opts=[],pool=[],built=[],res=[],cur=null,claimed=false;
+const P=[[8,80],[28,42],[54,70],[80,34]];
+const show=id=>{['sn','sm','sb','se'].forEach(x=>$('#'+x).hidden=x!=id);scrollTo(0,0)};
+/* ===== หน้าแรก ===== */
+function begin(){const v=$('#nm').value.trim();if(!v){$('#wn').textContent='⚠️ กรุณาพิมพ์ชื่อก่อนเริ่มเกม';return}
+name=v;st=0;wi=0;mp=0;res=[];pts=0;bon=0;strk=0;mul=1;mus();$('#wn').textContent='';snd('click');goMap()}
+$('#go').onclick=begin;$('#nm').onkeydown=e=>{if(e.key=='Enter')begin()};
+/* ===== แผนที่ ===== */
+function goMap(){show('sm');$('#pl').setAttribute('points',P.map(p=>p.join(',')).join(' '));
+$('#nds').innerHTML=E.map((e,i)=>`<div class="nd" style="left:${P[i+1][0]}%;top:${P[i+1][1]}%">${res[i]&&res[i].won?'✅':e.e}<small>ด่าน ${i+1}</small></div>`).join('');
+const h=$('#mh');h.style.transition='none';h.style.left=P[mp][0]+'%';h.style.top=P[mp][1]+'%';
+$('#mt').innerHTML='🗺️ ด่านที่ '+(st+1)+': '+E[st].t+'<br><small>'+MS[st]+'</small>';const b=$('#wk');b.disabled=false;b.textContent='👣 เดินไปด่าน '+(st+1)}
+$('#wk').onclick=async()=>{const b=$('#wk');b.disabled=true;const h=$('#mh');void h.offsetWidth;h.style.transition='';
+mp=st+1;h.classList.add('walk');h.style.left=P[mp][0]+'%';h.style.top=P[mp][1]+'%';for(let i=0;i<6;i++){snd('step');await sleep(270*K)}h.classList.remove('walk');await sleep(200);startBattle()};
+/* ===== ต่อสู้ ===== */
+const ar=()=>$('#ar'),A=(el,k,d)=>el.animate(k,{duration:d*K,easing:'ease-out'}).finished.catch(()=>{});
+function ctr(el){const r=el.getBoundingClientRect(),a=ar().getBoundingClientRect();return{x:r.left-a.left+r.width/2,y:r.top-a.top+r.height/2}}
+function fx(el,t){const p=ctr(el),s=document.createElement('span');s.className='ft';s.textContent=t;s.style.left=p.x+'px';s.style.top=p.y+'px';ar().appendChild(s);A(s,[{transform:'translate(-50%,-50%) scale(.5)',opacity:0},{transform:'translate(-50%,-120%) scale(1.3)',opacity:1},{transform:'translate(-50%,-200%) scale(1)',opacity:0}],900).then(()=>s.remove())}
+function burst(el,ch){const p=ctr(el);for(let i=0;i<9;i++){const s=document.createElement('span');s.className='pr';s.textContent=ch[i%ch.length];s.style.left=p.x+'px';s.style.top=p.y+'px';s.style.fontSize='22px';ar().appendChild(s);const g=i/9*6.28;A(s,[{transform:'translate(-50%,-50%)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(g)*70}px),calc(-50% + ${Math.sin(g)*60}px)) scale(.4)`,opacity:0}],700).then(()=>s.remove())}}
+function shake(){A(ar(),[{transform:'translate(0)'},{transform:'translate(-6px,3px)'},{transform:'translate(6px,-3px)'},{transform:'translate(0)'}],350)}
+function hud(){$('#hh').style.width=Math.max(0,hp)+'%';$('#eh').style.width=Math.max(0,100-c*20)+'%';$('#sc').textContent='⭐ '+pts+' ✨'+bon+(mul>1?' x'+mul:'');
+$('#dt').innerHTML=Array.from({length:5},(_,i)=>`<i class="${i<qi?(cur[i]?'ok':'no'):i==qi?'cur':''}"></i>`).join('');$('#hw').textContent=W[wi].e}
+function startBattle(){show('sb');const e=E[st];qi=0;c=0;wr=0;hp=100;cur=[];stagePts=0;sb=0;dg=3;pts=res.reduce((a,r,i)=>i==st?a:a+r.pts,0);bon=res.reduce((a,r,i)=>i==st?a:a+(r.bn||0),0);ord=shuf([...QS[st].keys()]).slice(0,5);cb=0;
+$('#tt').textContent='ด่าน '+(st+1)+' · '+e.t;$('#hn').textContent=name;$('#en_n').textContent=e.n;$('#ee').innerHTML=CH[st];
+$('#ar').style.background=e.bg;const pos=[[6,8,54],[70,6,50],[40,14,34],[82,34,36],[24,40,32],[52,56,34],[92,52,30]];
+$('#bg').innerHTML=e.d.map((d,i)=>`<span style="left:${pos[i][0]}%;top:${pos[i][1]}%;font-size:${pos[i][2]}px">${d}</span>`).join('')+'<span class="fa" style="top:18%">🏹</span><span class="fa f2" style="top:32%">☄️</span><span class="fa f3" style="top:10%">➳</span>';
+['#hero','#en'].forEach(s=>{$(s).style.opacity=1;$(s).classList.remove('hit','hurt')});hud();snd('fight');
+const f=document.createElement('div');f.id='fgt';f.textContent='FIGHT!';ar().appendChild(f);
+$('#hero').classList.add('walk');setTimeout(()=>$('#hero').classList.remove('walk'),900);A($('#hero'),[{transform:'translateX(-200px)',opacity:0},{transform:'none',opacity:1}],800);A($('#en'),[{transform:'translateX(260px)',opacity:0},{transform:'none',opacity:1}],800);A(f,[{transform:'scale(.2)',opacity:0},{transform:'scale(1.2)',opacity:1},{transform:'scale(1)',opacity:0}],1100).then(()=>{f.remove();ask()})}
+let stagePts=0,sb=0;
+function ask(){const q=QS[st][ord[qi]];busy=false;$('#fb').hidden=true;$('#ty').textContent=TY[q.t]+' · ข้อ '+(qi+1)+'/5';hud();let h='';
+if(q.t=='c'||q.t=='f'){opts=shuf(q.o.map((t,i)=>({t,k:i==q.a})));h=`<p class="q">${q.q.replace('___','<b class="bl">_____</b>')}</p><div class="g">`+opts.map((o,i)=>`<button class="op" data-i="${i}"><i>${i+1}</i>${o.t}</button>`).join('')+'</div>'}
+else if(q.t=='e')h=`<p class="q">แตะคำที่ผิดในประโยคนี้</p><div class="wr">`+q.w.map((w,i)=>`<button class="wd" data-i="${i}">${w}</button>`).join('')+'</div>';
+else if(q.t=='t')h=`<p class="q">${q.q.replace('___','<b class="bl">_____</b>')}</p><input id="ti" placeholder="พิมพ์คำตอบ" autocomplete="off"><div class="row"><button id="tb" class="b2">ตรวจ ✔️</button></div>`;else if(q.t=='m'){msel=null;mdone=0;const mr=shuf(q.p.map((_,i)=>i));h=`<p class="q">แตะซ้ายแล้วแตะขวาเพื่อจับคู่</p><div class="g"><div style="display:grid;gap:8px">${q.p.map((p,i)=>`<button class="op" data-s="l" data-i="${i}">${p[0]}</button>`).join('')}</div><div style="display:grid;gap:8px">${mr.map(i=>`<button class="op" data-s="r" data-i="${i}">${q.p[i][1]}</button>`).join('')}</div></div>`}else{pool=shuf(q.w.map((w,i)=>({w,id:i})));built=[];h=`<p class="q">แตะคำเพื่อเรียงเป็นประโยคที่ถูกต้อง</p><div class="bx" id="bx"></div><div class="wr" id="pl2"></div><div class="row"><button id="chk" class="b2">ตรวจคำตอบ ✔️</button><button id="clr" class="b4">ล้าง</button></div>`}
+$('#qa').innerHTML=h;if(q.t=='o')rr()}
+function rr(){const mk=(a,k)=>a.map(t=>`<button class="tk" data-k="${k}" data-id="${t.id}">${t.w}</button>`).join('');$('#bx').innerHTML=mk(built,'b');$('#pl2').innerHTML=mk(pool,'p')}
+$('#qa').onclick=e=>{const b=e.target.closest('button');if(!b||busy)return;const q=QS[st][ord[qi]];snd('click');
+if(q.t=='c'||q.t=='f'){const i=+b.dataset.i,ok=opts[i].k;[...$('#qa').querySelectorAll('.op')].forEach((x,j)=>{if(opts[j].k)x.classList.add('good');else if(j==i)x.classList.add('bad')});res_(ok,q.x)}
+else if(q.t=='e'){const i=+b.dataset.i,ok=i==q.a;b.classList.add(ok?'good':'bad');if(!ok)$('#qa').querySelectorAll('.wd')[q.a].classList.add('good');res_(ok,q.x+` (คำที่ถูกคือ “${q.fix}”)`)}
+else if(q.t=='t'){if(b.id!='tb')return;const nz=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim();const ok=q.a.some(a=>nz(a)==nz($('#ti').value));res_(ok,q.x+' (คำตอบ: '+q.a[0]+')')}
+else if(q.t=='m'){const i=+b.dataset.i,qa=$('#qa'),L=()=>qa.querySelector(`[data-s=l][data-i="${i}"]`);if(b.dataset.s=='l'){if(b.classList.contains('good'))return;msel=i;qa.querySelectorAll('[data-s=l]').forEach(x=>x.style.outline='');b.style.outline='3px solid #ff8fb3'}else{if(msel==null||b.classList.contains('good'))return;if(i==msel){b.classList.add('good');L().classList.add('good');L().style.outline='';msel=null;if(++mdone==q.p.length)res_(true,q.x)}else{b.classList.add('bad');res_(false,q.x)}}}
+else{if(b.id=='clr'){pool=pool.concat(built);built=[];rr();return}
+if(b.id=='chk'){const ok=built.length==q.w.length&&built.every((t,i)=>t.id==i);res_(ok,q.x+` — ประโยคที่ถูกคือ “${q.w.join(' ')}”`);return}
+const id=+b.dataset.id,from=b.dataset.k=='p'?pool:built,to=from==pool?built:pool,i=from.findIndex(t=>t.id==id);to.push(from.splice(i,1)[0]);rr()}};
+document.addEventListener('keydown',e=>{if(!$('#sb').hidden&&!busy&&/^[1-4]$/.test(e.key)){const b=$('#qa').querySelector(`.op[data-i="${e.key-1}"]`);if(b)b.click()}});
+async function res_(ok,x){if(busy)return;busy=true;cur[qi]=ok;let bn=0;
+if(ok){c++;strk++;bn=5*mul;pts+=10;bon+=bn;stagePts+=10;sb+=bn;mul=strk%5==0?Math.min(3,strk/5+1):1;await atk2()}else{wr++;hp-=34;strk=0;mul=1;await hurt2()}
+hud();const last=hp<=0||qi==4;const f=$('#fb');f.hidden=false;
+f.innerHTML=`<div>${ok?'✅ ถูกต้อง! +10 แต้ม · โบนัส +'+bn+(mul>1?' · ข้อถัดไปโบนัส x'+mul:''):'❌ ยังไม่ถูก'+(dod?' — หลบพ้น! HP ไม่ลด':' ผู้กล้าเสีย HP 34')}</div><div style="margin:6px 0">💡 ${esc(x)}</div><button class="b3" id="nx">${last?'ดูผลด่าน ▶':'ข้อต่อไป ▶'}</button>`;
+$('#nx').onclick=()=>{snd('click');if(hp<=0||qi==4)endStage();else{qi++;ask()}}}
+async function atk(){const w=W[wi],h=$('#hero'),e=$('#en'),dx=e.getBoundingClientRect().left-h.getBoundingClientRect().left;
+h.classList.add('walk');setTimeout(()=>h.classList.remove('walk'),650*K);A(h,[{transform:'translate(0)'},{transform:`translate(${dx*.4}px,-18px) scale(1.12)`},{transform:'translate(0)'}],700);await sleep(250*K);h.classList.add('swing');setTimeout(()=>h.classList.remove('swing'),520);
+const p=document.createElement('span');p.className='pr';p.textContent=w.p;const o=ctr(h);p.style.left=o.x+'px';p.style.top=o.y+'px';ar().appendChild(p);
+await A(p,[{transform:'translate(-50%,-50%) rotate(0)'},{transform:`translate(calc(-50% + ${dx*.8}px),-50%) rotate(${w.s?720:0}deg)`}],420);p.remove();
+snd('ok');e.classList.add('hit');A(e,[{transform:'translate(0)'},{transform:'translateX(34px) rotate(14deg) scale(.9)'},{transform:'translate(0)'}],450);burst(e,['⭐','✨','💥']);fx(e,'POW!');shake();hud();await sleep(550*K);e.classList.remove('hit')}
+async function hurt(){const h=$('#hero'),e=$('#en'),dx=e.getBoundingClientRect().left-h.getBoundingClientRect().left;
+A(e,[{transform:'translate(0)'},{transform:`translate(${-dx*.3}px,-10px) scale(1.12)`},{transform:'translate(0)'}],700);await sleep(250*K);
+const p=document.createElement('span');p.className='pr';p.textContent=E[st].a;const o=ctr(e);p.style.left=o.x+'px';p.style.top=o.y+'px';ar().appendChild(p);
+await A(p,[{transform:'translate(-50%,-50%) rotate(0)'},{transform:`translate(calc(-50% + ${-dx*.8}px),-50%) rotate(-720deg)`}],420);p.remove();
+snd('bad');h.classList.add('hurt');A(h,[{transform:'translate(0)'},{transform:'translateX(-34px) rotate(-14deg) scale(.9)'},{transform:'translate(0)'}],450);burst(h,['💢','💥','🔥']);fx(h,'OUCH!');shake();hud();await sleep(550*K);h.classList.remove('hurt')}
+/* ===== ต่อสู้สมจริง ===== */
+let cb=0;
+const flash=c=>{const d=document.createElement('div');d.style.cssText=`position:absolute;inset:0;background:${c};z-index:8;pointer-events:none`;ar().appendChild(d);A(d,[{opacity:.8},{opacity:0}],380).then(()=>d.remove())};
+function at(cls,el,css){const p=ctr(el),s=document.createElement('span');s.className=cls;s.style.left=p.x+'px';s.style.top=p.y+'px';if(css)s.style.cssText+=css;ar().appendChild(s);return s}
+function sl(el,col){const s=at('sl',el,'border-top-color:'+col+';border-left-color:'+col);A(s,[{transform:'translate(-50%,-50%) rotate(-70deg) scale(.3)',opacity:1},{transform:'translate(-50%,-50%) rotate(50deg) scale(1.3)',opacity:0}],380).then(()=>s.remove())}
+function ring(el,col){const s=at('rg',el,'border-color:'+col);A(s,[{transform:'translate(-50%,-50%) scale(.3)',opacity:1},{transform:'translate(-50%,-50%) scale(3.5)',opacity:0}],520).then(()=>s.remove())}
+function num(el,t,col){const s=at('ft',el,'font-size:36px;color:'+col+';top:'+(ctr(el).y-30)+'px');s.textContent=t;A(s,[{transform:'translate(-50%,-50%) scale(.5)',opacity:0},{transform:'translate(-50%,-130%) scale(1.3)',opacity:1},{transform:'translate(-50%,-230%) scale(1)',opacity:0}],1000).then(()=>s.remove())}
+const back=async(el,from)=>{await A(el,[{transform:from},{transform:'translate(0)'}],380);el.style.transform=''};
+async function frz(){ar().classList.add('frz');await sleep(100*K);ar().classList.remove('frz')}
+function proj(from,ch,dx,size,rot){const s=at('pr',from,'font-size:'+size+'px');s.textContent=ch;return A(s,[{transform:'translate(-50%,-50%) rotate(0)'},{transform:`translate(calc(-50% + ${dx}px),-50%) rotate(${rot}deg)`}],400).then(()=>s.remove())}
+async function atk2(){cb++;const h=$('#hero'),e=$('#en'),dx=e.getBoundingClientRect().left-h.getBoundingClientRect().left,crit=cb>=3,mel=wi==1||wi==3,tx=dx-110,w=W[wi];
+h.classList.add('walk');burst(h,['💨']);
+if(mel){await A(h,[{transform:'translate(0)'},{transform:`translate(${tx}px,0)`}],420);h.style.transform=`translate(${tx}px,0)`}
+else await A(h,[{transform:'translate(0)'},{transform:'translate(-28px,0)'},{transform:'translate(0)'}],360);
+h.classList.remove('walk');h.classList.add('swing');await sleep(170*K);
+if(!mel)await proj(h,w.p,dx*.8,wi==2?40:44,0);
+setTimeout(()=>h.classList.remove('swing'),400);
+snd('ok');if(crit)setTimeout(()=>snd('ok'),130);
+e.classList.add('hit');sl(e,crit?'#ffe27a':'#fff');ring(e,'#fff');burst(e,['⭐','✨','💥']);fx(e,crit?'CRITICAL!':'POW!');num(e,'-20','#fff');flash(crit?'#fff7b0':'#ffffff88');shake();
+await frz();hud();
+await A(e,[{transform:'translate(0)'},{transform:`translateX(${crit?80:45}px) rotate(18deg)`},{transform:'translate(0)'}],520);
+e.classList.remove('hit');if(mel)await back(h,`translate(${tx}px,0)`)}
+async function hurt2(){cb=0;const h=$('#hero'),e=$('#en'),dx=e.getBoundingClientRect().left-h.getBoundingClientRect().left,mel=st<2,tx=-(dx-110),wu='translate(25px,-6px) scale(1.1)';
+e.classList.add('tele');fx(e,'❗');await A(e,[{transform:'translate(0)'},{transform:wu}],380);e.style.transform=wu;dod=false;if(dg>0){$('#dg').textContent='💨 หลบ! ('+dg+')';$('#dg').hidden=false}await sleep(520*K);$('#dg').hidden=true;e.classList.remove('tele');
+if(mel){const m=`translate(${tx}px,0) scale(1.1)`;await A(e,[{transform:wu},{transform:m}],330);e.style.transform=m;sl(h,'#ff8fb3')}
+else await proj(e,'🔥',-dx*.8,52,-30);
+if(dod){hp+=34;fx(h,'หลบ!');snd('step');await A(h,[{transform:'translate(0)'},{transform:'translate(-50px,-50px) rotate(-25deg)'},{transform:'translate(0)'}],500);hud();if(mel)await back(e,`translate(${tx}px,0) scale(1.1)`);else await back(e,wu);return}
+snd('bad');h.classList.add('hurt');ring(h,'#ff8fb3');burst(h,['💢','💥',mel?'💫':'🔥']);fx(h,'OUCH!');num(h,'-34','#ff4d6d');flash('#ff4d6d66');shake();
+await frz();hud();
+await A(h,[{transform:'translate(0)'},{transform:'translateX(-60px) rotate(-18deg)'},{transform:'translate(0)'}],520);
+h.classList.remove('hurt');
+if(mel)await back(e,`translate(${tx}px,0) scale(1.1)`);else await back(e,wu)}
+/* ===== จบด่าน ===== */
+function ov(h,b){const o=$('#ov');o.innerHTML='<div class="card">'+h+'<div class="row">'+b.map((x,i)=>`<button id="ob${i}" class="${x.c||''}" ${x.d?'disabled':''}>${x.t}</button>`).join('')+'</div></div>';o.hidden=false;b.forEach((x,i)=>$('#ob'+i).onclick=()=>x.f($('#ob'+i)))}
+async function endStage(){res[st]={c,pts:stagePts,bn:sb,won:hp>0};
+if(hp>0){const h=$('#hero');snd('win');A($('#en'),[{transform:'rotate(0)',opacity:1},{transform:'rotate(90deg) translateY(60px)',opacity:0}],900).then(()=>$('#en').style.opacity=0);
+for(let i=0;i<2;i++)await A(h,[{transform:'translateY(0)'},{transform:'translateY(-60px) rotate(15deg)'},{transform:'translateY(0)'}],450);
+const nw=W[st+1],last=st==2;claimed=false;
+ov(`<div class="big">🏆</div><h2>ชนะด่าน ${st+1}! ตอบถูก ${c}/5</h2><p id="ot">มีอาวุธใหม่รออยู่: ${nw.e} ${nw.n}</p>`,[
+{t:'🎁 รับอาวุธ',c:'b4',f:b=>{wi=st+1;claimed=true;snd('win');b.disabled=true;$('#ot').textContent='ได้รับ '+nw.e+' '+nw.n+' แล้ว! ท่าโจมตีเปลี่ยนไปตามอาวุธ';$('#ob1').disabled=false;hud()}},
+{t:last?'📊 ดูสรุปผล':'➡️ ไปด่านถัดไป',c:'b2',d:1,f:()=>{$('#ov').hidden=true;if(last)summary();else{st++;goMap()}}}])}
+else{snd('lose');A($('#hero'),[{transform:'rotate(0)'},{transform:'rotate(-90deg) translateY(40px)'}],700);
+ov(`<div class="big">💔</div><h2>แพ้ด่าน ${st+1}</h2><p>ตอบผิดครบ 3 ข้อแล้ว อยากลองใหม่ไหม?</p>`,[
+{t:'🔁 ลองด่านนี้ใหม่',c:'b2',f:()=>{$('#ov').hidden=true;startBattle()}},{t:'🏁 จบเกม ดูสรุป',c:'b3',f:()=>{$('#ov').hidden=true;summary()}}])}}
+/* ===== สรุป ===== */
+function summary(){show('se');let tc=0,tp=0,tb=0;const rows=[0,1,2].map(i=>{const r=res[i]||{c:0,pts:0,won:false};tc+=r.c;tp+=r.pts;tb+=r.bn||0;return`<tr><td>ด่าน ${i+1} ${E[i].e}</td><td>${r.c}/5</td><td>${r.pts}</td><td>${r.won?'✅ ชนะ':res[i]?'❌ แพ้':'➖ ไม่ได้เล่น'}</td></tr>`}).join('');
+const pass=tp>=105,pct=Math.round(tc/15*100);let best=tp;let L=[];try{L=JSON.parse(localStorage.getItem('pcb_log')||'[]');L.push({n:name,t:new Date().toLocaleString('th-TH'),m:tp,b:tb,c:tc});localStorage.setItem('pcb_log',JSON.stringify(L))}catch(e){}
+$('#se').innerHTML=`<h1>📊 สรุปผล</h1><p>👤 <b>${esc(name)}</b><br><small>${new Date().toLocaleString('th-TH')}</small></p>
+<table><tr><td></td><td>ถูก</td><td>แต้ม</td><td>ผล</td></tr>${rows}</table>
+<h2>⭐ คะแนนหลัก ${tp}/150 · ✨ โบนัส ${tb}</h2><p>ถูก ${tc}/15 (${pct}%) · ผ่านที่ 105 คะแนน</p><h2>${pass?'🎉 ผ่านเกณฑ์ 70%':'📚 ยังไม่ผ่านเกณฑ์ 70% (ต้องถูกอย่างน้อย 11 ข้อ)'}</h2>
+<h3>🏆 ตารางคะแนน (เครื่องนี้)</h3><table>${lb(L)}</table><div class="row"><button class="b3" id="csv">📋 คัดลอก CSV</button><button class="b4" id="clr2">🗑️ ล้างข้อมูล</button></div><button class="b2" id="again">🔁 เล่นใหม่</button>`;
+$('#again').onclick=()=>{show('sn');$('#nm').value=name};
+$('#csv').onclick=async()=>{const t=csv(L);try{await navigator.clipboard.writeText(t);$('#csv').textContent='คัดลอกแล้ว ✅'}catch(e){$('#se').insertAdjacentHTML('beforeend','<textarea style="width:100%;height:100px">'+esc(t)+'</textarea>')}};
+$('#clr2').onclick=()=>{try{localStorage.removeItem('pcb_log')}catch(e){}$('#clr2').textContent='ล้างแล้ว ✅'}}
+$('#hero .em').insertAdjacentHTML('afterbegin',HERO);$('#mh').innerHTML=HERO;
+ar().onpointermove=e=>{if(K<1)return;const r=ar().getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$('#s3').style.transform=`rotateX(${6-y*10}deg) rotateY(${-8+x*16}deg)`};
+const lb=L=>L.slice().sort((a,b)=>b.m-a.m||b.b-a.b).slice(0,5).map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.n)}</td><td>${r.m}</td><td>+${r.b}</td></tr>`).join('');
+const csv=L=>'ชื่อ,เวลา,คะแนนหลัก,โบนัส,ถูก\n'+L.map(r=>[r.n,r.t,r.m,r.b,r.c].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+function mus(){clearInterval(mt);const n=[392,440,523,587,659,523,440,392];let i=0;mt=setInterval(()=>{if(mute||paused||MV==0)return;try{tone(n[i%8],n[i%8],.35,'triangle',.12,0,MV);if(i%4==0)tone(n[i%8]/2,n[i%8]/2,.8,'sine',.1,0,MV)}catch(e){}i++},420)}
+$('#dg').onclick=()=>{if(dg>0&&!dod){dod=true;dg--;snd('click');$('#dg').hidden=true}};
+$('#pz').onclick=()=>{if(!$('#ov').hidden)return;paused=true;ov(`<div class="big">⏸</div><h2>พักเกม</h2><p>🎵 เสียงเพลง<input type="range" min="0" max="100" value="${MV*100}" oninput="MV=this.value/100"></p><p>💥 เสียงเอฟเฟกต์<input type="range" min="0" max="100" value="${SV*100}" oninput="SV=this.value/100"></p>`,[{t:'▶ เล่นต่อ',c:'b2',f:()=>{paused=false;$('#ov').hidden=true}}])};
+document.addEventListener('keydown',e=>{if(e.target.id=='ti'&&e.key=='Enter')$('#tb').click()});
+try{$('#dl').innerHTML=[...new Set(JSON.parse(localStorage.getItem('pcb_log')||'[]').map(r=>r.n))].map(n=>`<option value="${esc(n)}">`).join('')}catch(e){}
+</script></body></html>
